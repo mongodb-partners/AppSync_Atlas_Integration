@@ -20,6 +20,11 @@ Fine Grained data access.
 Authentication and Authorization through [Amazon Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
 
 
+## Pre-requisite
+
+Developer Tool: [VSCode](https://code.visualstudio.com/download), [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), [Docker](https://docs.docker.com/engine/install/), [Postman](https://www.postman.com/downloads/)
+
+
 
 ## Steps for Integration
 
@@ -35,13 +40,71 @@ Configure the database for [network security](https://www.mongodb.com/docs/atlas
 Create the Data APIs using the [link](https://www.mongodb.com/developer/products/atlas/atlas-data-api-introduction/)
 
 
-### 3.Create the lamdba resolver
+### 3.Store the API Key in AWS Secrets
+
+Copy the API Key into a json file, mycreds.json
+
+      aws secretsmanager create-secret --name ATLASAPIKey \
+          --description "API Keys secret created for AWS AppSync" \
+          --secret-string file://mycreds.json
 
 
-### 3.Create the AWS AppSync API
+###3. crerate a AWS Elastic Container Repository
+
+      aws ecr create-repository \
+                  --repository-name partner_atlas_appsync_int \
+                  --image-scanning-configuration scanOnPush=true \
+                  --region us-east-1
 
 
-### 4. Test the API
+### 3.create the docker image and deploy to lambda
+
+Copy the Python code to the VSCode
+
+update the DATA API endpoints
+
+create the docker image
+
+      aws ecr get-login-password --region us-east-1| docker login --username AWS --password-stdin <accountid>.dkr.ecr.us-east-1.amazonaws.com
+      
+      docker build -t partner_atlas_appsync_int . --platform=linux/amd64
+      
+      docker tag partner_test:latest <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest
+      
+      docker images
+      
+      docker push <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest
+
+
+### 4.Create the Lambda function
+
+
+
+      aws lambda create-function --region us-east-1 --function-name ppartner_atlas_appsync_int \
+          --package-type Image  \
+          --code ImageUri= <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest   \
+          --role <Lambda execution role>
+
+pls check the [link](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-images.html#configuration-images-api) for reference code
+
+### 4.Create the AWS AppSync API
+
+
+#### a. Define the schema
+
+#### b. Update the data source
+
+#### c. Build the API 
+
+#### d. Query the database
+
+
+### 5. Test the API
+
+Test the API with Postman
+
+
+
 
 ## Summary
 
