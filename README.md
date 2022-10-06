@@ -25,8 +25,14 @@ Authentication and Authorization through [Amazon Cognito](https://docs.aws.amazo
 
 ### 1.Create a MongoDB Atlas cluster
 
+Please follow the [link](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster) to setup a free cluster in MongoDB Atlas
+
+Configure the database for [network security](https://www.mongodb.com/docs/atlas/security/add-ip-address-to-list/) and [access](https://www.mongodb.com/docs/atlas/tutorial/create-mongodb-user-for-cluster/).
+
 
 ### 2.Create MongoDB Data API
+
+Create the Data APIs using the [link](https://www.mongodb.com/developer/products/atlas/atlas-data-api-introduction/)
 
 
 ### 3.Create the lamdba resolver
