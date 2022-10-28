@@ -3,21 +3,27 @@
 ## Introduction
 
 
-## [MongoDB Atlas](https://www.mongodb.com/atlas)
+## MongoDB Atlas
 
-MongoDB Atlas is an all purpose database having features like Document Model, Geo-spatial , Time-seires, hybrid deployment, multi cloud services. It evolved as "Developer Data Platform", intended to reduce the developers workload on development and management the database environment. It also provide a free tier to test out the application / database features.
+[MongoDB Atlas](https://www.mongodb.com/atlas) is a modern Developer Data Platform with a fully managed cloud database at its core.  Atlas is the best way to run MongoDB, the leading non-relational database. It provides rich features like flexible schema model, native timeseries collections, geo-spatial data, multi level indexing, RBAC, isolated workloads and many more–all built on top of the MongoDB document model.  
+
+MongoDB Atlas App Services help developers build apps, integrate services, and connect to their data without operational overhead utilizing features like hosted Data API and GraphQL API.  Atlas Data API allows developers to easily integrate Atlas data into their cloud apps and services over HTTPS with a flexible API.  Atlas GraphQL API lets developers access Atlas data from any standard GraphQL client with an API that generates based on your data’s schema. 
 
 
-## [AWS AppSync](https://aws.amazon.com/appsync/)
-AWS AppSync uses GraphQL, a data language that enables client apps to fetch, change and subscribe to data from servers. In a GraphQL query, the client specifies how the data is to be structured when it is returned by the server.
+## [AWS AppSync]
+[AWS AppSync](https://aws.amazon.com/appsync/) is an AWS product that allows developers to build GraphQL and Pub/Sub APIs.  With AppSync developers can create APIs that access data from one or many sources enabling real-time interactions in their applications.  The resulting APIs are serverless making it possible for the client to query only for the data it needs, in the format it needs, and pay only for the requests and the real-time messages delivered. 
 
 ## Salient Features
 
-Better performance and higher concurrency with MongoDB Atlas
-
-Fine Grained data access.
-
 Authentication and Authorization through [Amazon Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
+Simple, Secured, Easy GraphQL APIs
+Caching to improve performance
+End-to-end serverless architecture
+AutoScaling based on API request volumes
+Subscriptions to support real-time updates
+
+
+
 
 
 ## Pre-requisite
@@ -49,7 +55,7 @@ Copy the API Key into a json file, mycreds.json
           --secret-string file://mycreds.json
 
 
-###3. crerate a AWS Elastic Container Repository
+###4. crerate a AWS Elastic Container Repository
 
       aws ecr create-repository \
                   --repository-name partner_atlas_appsync_int \
@@ -57,7 +63,7 @@ Copy the API Key into a json file, mycreds.json
                   --region us-east-1
 
 
-### 3.create the docker image and deploy to lambda
+### 5.create the docker image and deploy to lambda
 
 Copy the Python code to the VSCode
 
@@ -76,7 +82,7 @@ create the docker image
       docker push <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest
 
 
-### 4.Create the Lambda function
+### 6.Create the Lambda function
 
 
 
@@ -87,7 +93,7 @@ create the docker image
 
 pls check the [link](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-images.html#configuration-images-api) for reference code
 
-### 4.Create the AWS AppSync API
+### 7.Create the AWS AppSync API
 
 
 #### a. Create API
@@ -123,7 +129,7 @@ pls check the [link](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted
 2. Select lambda data source added in previous step, and click save.
 <img width="1728" alt="Screenshot 2022-10-28 at 6 44 32 PM" src="https://user-images.githubusercontent.com/114057324/198650403-a8ccb56f-2d07-479b-a46e-ab8d1425bd43.png">
 
-### 6. Test the API
+### 8. Test the API
 #### a. Using AWS Management Console
 Goto Queries and select the query to execute, hit Run button and you should see your query result on the right side.
 
@@ -146,6 +152,7 @@ Goto Queries and select the query to execute, hit Run button and you should see 
 
 ## Summary
 
-Hope this technical guide helped you in integrating AWS AppSync API with MongoDB Atlas
+This solution can be extended to [AWS Amplify](https://aws.amazon.com/amplify/) for building mobile applications.
 
-For any assistance please reach out to partners@mongodb.com
+For any further information, please contact partners@mongodb.com
+
