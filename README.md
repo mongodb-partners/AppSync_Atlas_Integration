@@ -23,14 +23,14 @@ AutoScaling based on API request volumes
 Subscriptions to support real-time updates
 
 
-
-
-
 ## Pre-requisite
 
 Developer Tool: [VSCode](https://code.visualstudio.com/download), [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), [Docker](https://docs.docker.com/engine/install/), [Postman](https://www.postman.com/downloads/)
 
+
 ## Architecture
+
+![](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/AppSynDataAPI.png)
 
 
 
