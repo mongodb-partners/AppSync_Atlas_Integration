@@ -90,20 +90,58 @@ pls check the [link](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted
 ### 4.Create the AWS AppSync API
 
 
-#### a. Define the schema
+#### a. Create API
+1. Choose Build from scratch and hit Start, for getting a blank API.
+<img width="1728" alt="AppSync_Creation_Step1" src="https://user-images.githubusercontent.com/114057324/198644438-17269f86-094f-4113-83f0-4eb1b9d1fc97.png">
 
-#### b. Update the data source
-
-#### c. Build the API 
-
-#### d. Query the database
-
-
-### 5. Test the API
-
-Test the API with Postman
+2. Add API Name
+<img width="1728" alt="Screenshot 2022-10-28 at 5 36 25 PM" src="https://user-images.githubusercontent.com/114057324/198644942-23ffa2f9-dd09-4459-aa84-dcdab680eac4.png">
 
 
+#### b. Add Schema
+1. Click on Schema form the left navigations
+
+<img width="1728" alt="Screenshot 2022-10-28 at 5 36 56 PM" src="https://user-images.githubusercontent.com/114057324/198645875-92ecc6d3-a55e-4986-9a37-71be54207a41.png">
+
+2. GraphQL Schema can be built with Queries and Mutations and click Save Schema
+<img width="1728" alt="Screenshot 2022-10-28 at 5 37 45 PM" src="https://user-images.githubusercontent.com/114057324/198646751-842d36c2-47f4-4750-a72d-4fe6a339e019.png">
+
+#### c. Create Data Sources
+
+1. Click on Data Sources from the left navigations and hit Create data source
+<img width="1728" alt="Screenshot 2022-10-28 at 5 38 46 PM" src="https://user-images.githubusercontent.com/114057324/198647355-38a85ad1-95f7-47af-bd9d-4cbd082bfdae.png">
+
+
+2. Attach Lambda function which contains MongoDB driver code for quering the data (Multiple data sources can be added based on requirements)
+<img width="1728" alt="Screenshot 2022-10-28 at 5 40 00 PM" src="https://user-images.githubusercontent.com/114057324/198648544-23e46164-dc55-46c7-9693-31967a069400.png">
+
+
+#### d. Attach Resolvers
+1. Go to schema and attach resolvers for Mutations and Queries
+<img width="1728" alt="Screenshot 2022-10-28 at 6 43 22 PM" src="https://user-images.githubusercontent.com/114057324/198650042-2e6e61dd-40be-4fc1-ab8b-357d024a00a4.png">
+
+2. Select lambda data source added in previous step, and click save.
+<img width="1728" alt="Screenshot 2022-10-28 at 6 44 32 PM" src="https://user-images.githubusercontent.com/114057324/198650403-a8ccb56f-2d07-479b-a46e-ab8d1425bd43.png">
+
+### 6. Test the API
+#### a. Using AWS Management Console
+Goto Queries and select the query to execute, hit Run button and you should see your query result on the right side.
+
+<img width="1728" alt="Screenshot 2022-10-28 at 6 46 20 PM" src="https://user-images.githubusercontent.com/114057324/198651689-0cd1a646-a54b-4d30-be2b-b80c4bbbb890.png">
+
+##### b. Using Postman
+1. Click on settings and create a curl API as below.
+
+            curl --location --request <CRUD OPERATION> <API URL>
+            --header 'Content-Type: application/graphql' \
+            --header 'x-api-key: <API KEY> \
+            --data-raw '{"query": <QUERY>}'
+![Screenshot 2022-10-28 at 8 14 14 PM](https://user-images.githubusercontent.com/114057324/198657824-c690a69d-e2d5-4660-8db4-47d526af816e.png)
+
+      
+2. Goto Postman and import the curl command and hit send to get the response.
+
+<img width="1728" alt="Screenshot 2022-10-28 at 7 41 33 PM" src="https://user-images.githubusercontent.com/114057324/198658280-c9f54909-2fb7-4090-994b-cc27cf661b99.png">
 
 
 ## Summary
