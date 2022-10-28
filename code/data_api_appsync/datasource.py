@@ -86,8 +86,10 @@ def handler(event, context):
         #Make the API call
         response = requests.request("POST", url, headers=headers, data=payload)
         #Return document data from the response of the API call
-        print(">> Response : ", response)
+        print(">> Response : ", type(response))
         return response.json()['document']
     except Exception as e:
         print(">> Exception : {}".format(e))
         return None
+
+handler({"arguments": {"product_id" : "P01"}}, {})

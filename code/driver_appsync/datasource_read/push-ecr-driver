@@ -1,0 +1,4 @@
+#!/bin/bash
+docker build -t appsync-driver-partner . --platform=linux/amd64 
+docker tag appsync-driver-partner:latest 979559056307.dkr.ecr.us-east-1.amazonaws.com/appsync-driver-partner:latest
+docker push 979559056307.dkr.ecr.us-east-1.amazonaws.com/appsync-driver-partner:latest
