@@ -30,6 +30,8 @@ Subscriptions to support real-time updates
 
 Developer Tool: [VSCode](https://code.visualstudio.com/download), [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), [Docker](https://docs.docker.com/engine/install/), [Postman](https://www.postman.com/downloads/)
 
+## Architecture
+
 
 
 ## Steps for Integration
