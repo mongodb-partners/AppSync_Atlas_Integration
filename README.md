@@ -91,7 +91,7 @@ create the docker image
       aws lambda create-function --region us-east-1 --function-name ppartner_atlas_appsync_int \
           --package-type Image  \
           --code ImageUri= <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest   \
-          --role <Lambda execution role>
+          --role <Lambda execution role ARN>
 
 pls check the [link](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-images.html#configuration-images-api) for reference code
 
