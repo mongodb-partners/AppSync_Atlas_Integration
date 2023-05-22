@@ -1,0 +1,7 @@
+{"person_id":string,
+"Name":string,
+"Age":int,
+"Risk_factor":string,
+"HNI":string,
+"Political":string
+}
