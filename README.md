@@ -42,6 +42,7 @@ Please follow the [link](https://www.mongodb.com/docs/atlas/tutorial/deploy-free
 
 Configure the database for [network security](https://www.mongodb.com/docs/atlas/security/add-ip-address-to-list/) and [access](https://www.mongodb.com/docs/atlas/tutorial/create-mongodb-user-for-cluster/).
 
+create documents for customer and risk . please refer the sample structure for [customer](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/customer.json) and [risk](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/risk.json) documents.
 
 ### 2.Create MongoDB Data API
 
@@ -50,11 +51,15 @@ Create the Data APIs using the [link](https://www.mongodb.com/developer/products
 
 ### 3.Store the API Key in AWS Secrets
 
-Copy the API Key into a json file, mycreds.json
+Copy the API Key and MongoDB Credentials to a local JSON file. Template for the JSON files shown in the link:  [mycreds.json](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/mycreds.json) & [myapikey.json](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/myapikey.json)
 
-      aws secretsmanager create-secret --name ATLASAPIKey \
-          --description "API Keys secret created for AWS AppSync" \
+      aws secretsmanager create-secret --name <secret_name> \
+          --description "MongoDB secrets created for AWS AppSync" \
           --secret-string file://mycreds.json
+          
+      aws secretsmanager create-secret --name <secret_name> \
+          --description "API Keys secret created for AWS AppSync" \
+          --secret-string file://myapikey.json
 
 
 ###4. crerate a AWS Elastic Container Repository
@@ -62,38 +67,42 @@ Copy the API Key into a json file, mycreds.json
       aws ecr create-repository \
                   --repository-name partner_atlas_appsync_int \
                   --image-scanning-configuration scanOnPush=true \
-                  --region us-east-1
+                  --region <aws_region>
 
 
 ### 5.create the docker image and deploy to lambda
 
-Copy the Python code to the VSCode
+The code base contain 3 repos: data_api_appsync, driver_appsync (datasource_create & datasource_read). Copy the appropriate code to the VSCode.
 
-update the DATA API endpoints
+Note: AWS ECR repositories and Lambda functions are to be created for each of the methods, viz: API / Lambda driver (read / create)
+
+update the DATA API endpoints and the database credentials appropriate for your requirement.
 
 create the docker image
 
-      aws ecr get-login-password --region us-east-1| docker login --username AWS --password-stdin <accountid>.dkr.ecr.us-east-1.amazonaws.com
+      aws ecr get-login-password --region <aws region> | docker login --username AWS --password-stdin <accountid>.dkr.ecr.<aws region>.amazonaws.com
       
       docker build -t partner_atlas_appsync_int . --platform=linux/amd64
       
-      docker tag partner_test:latest <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest
+      docker tag partner_test:latest <accountid>.dkr.ecr.<aws region>.amazonaws.com/partner_atlas_appsync_int:latest
       
       docker images
       
-      docker push <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest
+      docker push <accountid>.dkr.ecr.<aws region>.amazonaws.com/partner_atlas_appsync_int:latest
 
 
 ### 6.Create the Lambda function
 
 
 
-      aws lambda create-function --region us-east-1 --function-name ppartner_atlas_appsync_int \
+      aws lambda create-function --region <aws region>  --function-name partner_atlas_appsync_int \
           --package-type Image  \
-          --code ImageUri= <accountid>.dkr.ecr.us-east-1.amazonaws.com/partner_atlas_appsync_int:latest   \
+          --code ImageUri= <accountid>.dkr.ecr.<aws region>.amazonaws.com/partner_atlas_appsync_int:latest   \
           --role <Lambda execution role ARN>
 
 pls check the [link](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-images.html#configuration-images-api) for reference code
+
+Note: Ensure the lambda function is having adequate permission to read from the secret manager.
 
 ### 7.Create the AWS AppSync API
 
