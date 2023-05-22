@@ -7,8 +7,8 @@ from bson import json_util
 
 def get_secret():
 
-    secret_name = "lambda_appync_partner"
-    region_name = "us-east-1"
+    secret_name = "lambda_appync_partner"               ## update the secret name
+    region_name = "us-east-1"                           ## update the aws region
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
@@ -70,12 +70,12 @@ def handler(event, context):
 
         #Constants
         MONGO_ENDPOINT= "mongodb+srv://{}:{}@{}.mongodb.net/?retryWrites=true&w=majority".format(user_name, password, server_addr)
-        REGION_NAME = "us-east-1"
-        MONGO_DB = "Credit_Risk"
-        MONGO_COL = "Details"
+        REGION_NAME = "us-east-1"       ## update the aws region
+        MONGO_DB = "Credit_Risk"        ## update the database name
+        MONGO_COL = "Details"           ## update the collection name
 
         feilds = event.get("arguments")
-        id = feilds.get("person_id")
+        id = feilds.get("person_id")    ## update the field according to the document to be queried
         #Connect to MongoDB Atlas
         client = pymongo.MongoClient(MONGO_ENDPOINT)
         db = client[MONGO_DB]
