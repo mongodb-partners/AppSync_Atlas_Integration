@@ -1,0 +1,15 @@
+{
+"person_id": string,
+"person_age": int,
+"person_income": int,
+"person_home_ownership": string,
+"person_emp_length":int,
+"loan_intent":string,
+“loan_grade":sting,
+"loan_amnt":int,
+"loan_int_rate":int,
+"loan_status": string,
+"loan_percent_income":int,
+"cb_person_default_on_file": string,
+"cb_person_cred_hist_length": string
+}
