@@ -62,7 +62,9 @@ Copy the API Key and MongoDB Credentials to a local JSON file. Template for the 
           --secret-string file://myapikey.json
 
 
-###4. crerate a AWS Elastic Container Repository
+
+### 4. crerate a AWS Elastic Container Repository
+
 
       aws ecr create-repository \
                   --repository-name partner_atlas_appsync_int \
