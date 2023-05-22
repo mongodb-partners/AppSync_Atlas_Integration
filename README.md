@@ -76,7 +76,7 @@ Copy the API Key and MongoDB Credentials to a local JSON file. Template for the 
 
 The code base contain 3 repos: data_api_appsync, driver_appsync (datasource_create & datasource_read). Copy the appropriate code to the VSCode.
 
-Note: AWS ECR repositories and Lambda functions are to be created for each of the methods, viz: API / Lambda driver (read / create)
+Note: AWS ECR repositories and Lambda functions are to be created for each of the 3 repos, viz: data_api_appsync /  driver_appsync (read / create)
 
 update the DATA API endpoints and the database credentials appropriate for your requirement.
 
