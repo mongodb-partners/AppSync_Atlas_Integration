@@ -8,8 +8,8 @@ from botocore.exceptions import ClientError
 
 def get_secret():
 
-    secret_name = "lambda_appync_partner"
-    region_name = "us-east-1"
+    secret_name = "lambda_appync_partner"       ## update to the secret name 
+    region_name = "us-east-1"                   ## update to the AWS region
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
@@ -63,15 +63,15 @@ def handler(event, context):
     '''
     try:
         #URL endpoint to the Atlas
-        url = "https://data.mongodb-api.com/app/data-pwazq/endpoint/data/v1/action/findOne"
+        url = "https://data.mongodb-api.com/app/data-pwazq/endpoint/data/v1/action/findOne"         ## update to the data api endpoint
         #Reading the arguments
         feilds = event.get("arguments")
-        id = feilds.get("product_id")
+        id = feilds.get("product_id")                  ## update the field according to the query functions (if required)
         #Fabricating payload for end-point call
         payload = json.dumps({
-            "collection": "Details",
-            "database": "Hotels",
-            "dataSource": "PartnerSagemaker",
+            "collection": "Details",                    ## update the collection name
+            "database": "Hotels",                       ## update the Database name
+            "dataSource": "PartnerSagemaker",           ## update the datasource name
             #Can include multiple filters based on arguments received 
             "filter": {
                 "product_id": id
@@ -92,4 +92,4 @@ def handler(event, context):
         print(">> Exception : {}".format(e))
         return None
 
-handler({"arguments": {"product_id" : "P01"}}, {})
+handler({"arguments": {"product_id" : "P01"}}, {})              ## update the field and sample value accordingly to the document value to be queried
