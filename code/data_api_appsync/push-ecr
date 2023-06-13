@@ -1,4 +1,4 @@
 #!/bin/bash
 docker build -t appsync-lambda . --platform=linux/amd64 
-docker tag appsync-lambda:latest 979559056307.dkr.ecr.us-east-1.amazonaws.com/appsync-lambda:latest
-docker push 979559056307.dkr.ecr.us-east-1.amazonaws.com/appsync-lambda:latest 
+docker tag appsync-lambda:latest <aws account id>.dkr.ecr.<aws region>.amazonaws.com/appsync-lambda:latest
+docker push <aws account id>.dkr.ecr.<aws region>.amazonaws.com/appsync-lambda:latest 
