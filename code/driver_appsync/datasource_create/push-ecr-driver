@@ -1,5 +1,5 @@
 #!/bin/bash
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 979559056307.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account id>.dkr.ecr.<aws region>.amazonaws.com
 docker build -t appsync_create_partner . --platform=linux/amd64 
-docker tag appsync_create_partner:latest 979559056307.dkr.ecr.us-east-1.amazonaws.com/appsync_create_partner:latest
-docker push 979559056307.dkr.ecr.us-east-1.amazonaws.com/appsync_create_partner:latest
+docker tag appsync_create_partner:latest <aws account id>.dkr.ecr.<aws region>.amazonaws.com/appsync_create_partner:latest
+docker push <aws account id>.dkr.ecr.<aws region>.amazonaws.com/appsync_create_partner:latest
