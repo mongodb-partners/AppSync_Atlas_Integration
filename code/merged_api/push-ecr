@@ -1,0 +1,4 @@
+#!/bin/bash
+docker build -t partner_appsync_mergedapi-lambda . --platform=linux/amd64 
+docker tag appsync-lambda:latest <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com/partner_appsync_mergedapi-lambda:latest
+docker push <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com/partner_appsync_mergedapi-lambda:latest 
