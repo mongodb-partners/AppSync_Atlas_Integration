@@ -71,16 +71,16 @@ def handler(event, context):
         #Constants
         MONGO_ENDPOINT= "mongodb+srv://{}:{}@{}.mongodb.net/?retryWrites=true&w=majority".format(user_name, password, server_addr)
         REGION_NAME = "us-east-1"       ## update the aws region
-        MONGO_DB = "Credit_Risk"        ## update the database name
-        MONGO_COL = "Details"           ## update the collection name
+        MONGO_DB = "futurebank"        ## update the database name
+        MONGO_COL = "counter_party_ris"           ## update the collection name
 
         feilds = event.get("arguments")
-        id = feilds.get("person_id")    ## update the field according to the document to be queried
+        id = feilds.get("counter_party_id")    ## update the field according to the document to be queried
         #Connect to MongoDB Atlas
         client = pymongo.MongoClient(MONGO_ENDPOINT)
         db = client[MONGO_DB]
         #find one query
-        result = db[MONGO_COL].find_one({"person_id": id})
+        result = db[MONGO_COL].find_one({"counter_party_id": id})
         modified_result = modify_format(result)
         return modified_result
     
