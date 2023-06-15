@@ -10,7 +10,7 @@
 MongoDB Atlas App Services help developers build apps, integrate services, and connect to their data without operational overhead utilizing features like hosted Data API and GraphQL API.  Atlas Data API allows developers to easily integrate Atlas data into their cloud apps and services over HTTPS with a flexible API.  Atlas GraphQL API lets developers access Atlas data from any standard GraphQL client with an API that generates based on your data’s schema. 
 
 
-## [AWS AppSync]
+## AWS AppSync
 [AWS AppSync](https://aws.amazon.com/appsync/) is an AWS product that allows developers to build GraphQL and Pub/Sub APIs.  With AppSync developers can create APIs that access data from one or many sources enabling real-time interactions in their applications.  The resulting APIs are serverless making it possible for the client to query only for the data it needs, in the format it needs, and pay only for the requests and the real-time messages delivered. 
 
 ## Salient Features
