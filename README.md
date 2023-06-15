@@ -42,7 +42,7 @@ Please follow the [link](https://www.mongodb.com/docs/atlas/tutorial/deploy-free
 
 Configure the database for [network security](https://www.mongodb.com/docs/atlas/security/add-ip-address-to-list/) and [access](https://www.mongodb.com/docs/atlas/tutorial/create-mongodb-user-for-cluster/).
 
-create documents for customer and risk . please refer the sample structure for [customer](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/customer.json) and [risk](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/risk.json) documents.
+create documents for customer and risk . please refer the sample structure for [CounterParty](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/customer.json) and [CounterPartyRisk](https://github.com/mongodb-partners/AppSync_Atlas_Integration/blob/main/code/risk.json) documents.
 
 ### 2.Create MongoDB Data API
 
