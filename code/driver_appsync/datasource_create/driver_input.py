@@ -60,16 +60,6 @@ def get_secret():
 
 user_name, password, server_addr = get_secret()
 
-## mongo_uri = "mongodb+srv://{}.mongodb.net/?retryWrites=true&w=majority'".format(server_addr)
-
-## Read from the MongoDB Atlas ###
-##read_mongo_options = {
-##    "uri": mongo_uri,
-##    "database": "customer_activity",    ## update the databasename
-##    "collection": "source",             ## update the collection
-##    "username": user_name,  
-##    "password": password 
-##}
 
 def handler(event, context):
     try:
@@ -78,12 +68,12 @@ def handler(event, context):
         #Constants
         MONGO_ENDPOINT= "mongodb+srv://{}:{}@{}.mongodb.net/?retryWrites=true&w=majority".format(user_name, password, server_addr)
         REGION_NAME = "us-east-1"           ## update the aws region
-        MONGO_DB = "Credit_Risk"            ## update the database name
-        MONGO_COL = "Details"               ## update the collection name
+        MONGO_DB = "futurebank"            ## update the database name
+        MONGO_COL = "counter_party_risk"               ## update the collection name
 
         logging.debug(event)
         input_fields = event.get("arguments")
-        person_id = input_fields.get("person_id")   ## update the field name as per the document to be filtered
+        counter_party_id = input_fields.get("counter_party_id")   ## update the field name as per the document to be filtered
 
         logging.debug(input_fields)
         #Connect to MongoDB Atlas
@@ -91,7 +81,7 @@ def handler(event, context):
         db = client[MONGO_DB]
         
         # Check: Does person already exists
-        find_person = db[MONGO_COL].find_one({"person_id": person_id})     ## update the field name as per the document to be filtered
+        find_person = db[MONGO_COL].find_one({"counter_party_id": counter_party_id})     ## update the field name as per the document to be filtered
         person_not_exist = find_person is None
 
         if person_not_exist:
