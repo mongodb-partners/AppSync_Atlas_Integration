@@ -1,10 +1,10 @@
 {"counter_party_id": string,
-"Name": string,
-"Type": string,
-"Contact_information":
+"name": string,
+"type": string,
+"contact_information":
 {"phone_number": string,
-"Email": string,
-"Address": string
+"email": string,
+"address": string
 }
 }
 
