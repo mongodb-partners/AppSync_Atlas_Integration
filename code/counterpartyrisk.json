@@ -1,0 +1,8 @@
+{
+"Counter_party_id": string,
+"Credit_rating": string,
+"Risk_assessment": string,
+"Compliance_status": string,
+"Industry": string
+}
+
