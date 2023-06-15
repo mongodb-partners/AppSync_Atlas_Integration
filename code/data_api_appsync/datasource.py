@@ -63,18 +63,18 @@ def handler(event, context):
     '''
     try:
         #URL endpoint to the Atlas
-        url = "https://data.mongodb-api.com/app/data-pwazq/endpoint/data/v1/action/findOne"         ## update to the data api endpoint
+        url = "https://data.mongodb-api.com/app/<dataapi>/endpoint/data/v1/action/findOne"         ## update to the data api endpoint
         #Reading the arguments
         feilds = event.get("arguments")
-        id = feilds.get("product_id")                  ## update the field according to the query functions (if required)
+        id = feilds.get("counter_party_id")                  ## update the field according to the query functions (if required)
         #Fabricating payload for end-point call
         payload = json.dumps({
-            "collection": "Details",                    ## update the collection name
-            "database": "Hotels",                       ## update the Database name
-            "dataSource": "PartnerSagemaker",           ## update the datasource name
+            "collection": "counterparty",                    ## update the collection name
+            "database": "futurebank",                       ## update the Database name
+            "dataSource": "PartnerAppSync",           ## update the datasource name
             #Can include multiple filters based on arguments received 
             "filter": {
-                "product_id": id
+                "counter_party_id": id
             },
         })
         #Adding necessary headers for API call
@@ -92,4 +92,4 @@ def handler(event, context):
         print(">> Exception : {}".format(e))
         return None
 
-handler({"arguments": {"product_id" : "P01"}}, {})              ## update the field and sample value accordingly to the document value to be queried
+handler({"arguments": {"counter_party_id" : "CP001"}}, {})              ## update the field and sample value accordingly to the document value to be queried
